@@ -6,6 +6,6 @@ class Product < ActiveRecord::Base
   validates_presence_of :price
   validates_presence_of :description
   validates_presence_of :title
-  validates_format_of :price, :with => /\A\d+[.]\d\d\Z/, :on => :create
+  validates_format_of :price, :with => /\A\d+[.]?\d{1,2}\Z/, :on => :create
 
 end
