@@ -1,17 +1,30 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%p#text-primary= notice
+%h1
+  Category:
   = category.name
+.panel.panel-default
+  .panel-heading 
+    %h2 Products
+  %table.table
+    %tr
+      %th Title
+      %th
+    - category.products.each do |product|
+      %tr
+        %td= product.title
+        %td.text-right
+          = link_to 'Show', category_product_path(product.category, product), class: 'btn btn-primary'
+          - if author? product, current_user
+            = link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-warning'
+          = link_to 'Destroy', category_product_path(product.category, product), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
+-if user_signed_in?
+  .panel.panel-default
+    .panel.panel-heading
+      %h3 New product
+    .panel-body
+      = render 'products/form'
 %p
-  - category.products.each do |product|
-    = product.title
-
-%p
-  %h3 New product
-  = render 'products/form'
-
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  -if user_signed_in?
+    = link_to 'Edit', edit_category_path(category), class: 'btn btn-warning'
+  = link_to 'Back to categories', categories_path, class: 'btn btn-primary'
