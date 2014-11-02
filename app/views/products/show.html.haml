@@ -1,25 +1,25 @@
 %p.text-primary= notice
 %p.text-warning= flash[:error]
+.panel.panel-default
+  .panel-heading
+    %h1= product.title
+  .panel-body
+    %dl.dl-horizontal
+      %dt Description:
+      %dd= product.description
+      %dt Price:
+      %dd= product.price
+      %dt Category
+      %dd= product.category.name
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
-
-%p
-  %b Category
-  = product.category.name
-
-%h3 Reviews
-= render 'reviews/form'
-
+%h3 Reviews:
+-if user_signed_in?
+  = render 'reviews/form'
+  %br
 = render reviews
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+%br
+%p
+  -if user_signed_in?
+    = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-warning'
+  = link_to 'Back to category', category_path(category), class: 'btn btn-primary'
