@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
   private
     def authenticate_admin!
-      redirect_to new_user_session_path and return unless current_user.admin?
+      if not current_user.try(:admin?)
+        redirect_to new_user_session_path and return
+      end
     end
 end
