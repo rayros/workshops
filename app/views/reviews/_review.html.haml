@@ -1,4 +1,10 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+
+%blockquote
+  %p= review.content
+  %footer
+    %b
+      Rating:
+      = review.rating
+      = '/ 5'
+    %em
+      = review.author
