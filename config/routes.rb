@@ -5,6 +5,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
+  get '/profile/:id', to: 'profile#show', as: :profile
   root 'categories#index'
 end

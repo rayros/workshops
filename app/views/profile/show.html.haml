@@ -1,0 +1,13 @@
+.panel.panel-primary
+  .panel-heading
+    %h1
+      Profile
+  .panel-body
+    %dl.dl-horizontal
+      %dt Email:
+      %dd= user.email
+      %dt Firstname:
+      %dd= user.firstname
+      %dt Lastname:
+      %dd= user.lastname
+    = render reviews
