@@ -14,9 +14,10 @@
         %td= product.title
         %td.text-right
           = link_to 'Show', category_product_path(product.category, product), class: 'btn btn-primary'
-          - if author? product, current_user
-            = link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-warning'
-          = link_to 'Destroy', category_product_path(product.category, product), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+          -if user_signed_in?
+            - if author? product, current_user
+              = link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-warning'
+            = link_to 'Destroy', category_product_path(product.category, product), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
 -if user_signed_in?
   .panel.panel-default
