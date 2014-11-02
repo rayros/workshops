@@ -28,6 +28,9 @@ local.local.*
 
 /public/assets
 
+# vim
+*.swp
+
 # Ignore application configuration
 /config/application.yml
 
