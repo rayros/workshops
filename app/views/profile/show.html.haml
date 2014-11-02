@@ -10,4 +10,8 @@
       %dd= user.firstname
       %dt Lastname:
       %dd= user.lastname
-    = render reviews
+    - reviews.each do |review|
+      %b
+        Date:
+        = review.date
+      = render review
